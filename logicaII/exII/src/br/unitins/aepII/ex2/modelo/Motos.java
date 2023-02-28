@@ -29,17 +29,20 @@ public class Motos {
             listaCadastro[i].peso = leitorMotos.nextDouble();
             listaCadastro[i].velocidade = 0.0;
 
-            System.out.println("Deseja continuar cadastrando motos? Digtite 's' para sim e 'n' para não.");
-            char escolha = leitorMotos.next().charAt(0);
+            if (i<3){
+                System.out.println("Deseja continuar cadastrando motos? Digtite 's' para sim e 'n' para não.");
+                char escolha = leitorMotos.next().charAt(0);
 
-            if (escolha == 'n')
+                if (escolha == 'n')
+                    i=listaCadastro.length;
+
+            }else
                 i=listaCadastro.length;
-
         }
     }
 
     public static void imprimirMotos(Motos[] lista){
-        System.out.println("Imprimindo todos os carros....");
+        System.out.println("Imprimindo todas as motos....");
         for (Motos motos : lista) {
             if (motos != null){
                 System.out.println("Marca da moto: " + motos.marca);

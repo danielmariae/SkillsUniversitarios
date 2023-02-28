@@ -2,7 +2,6 @@ package br.unitins.aepII.ex2.aplicacao;
 import br.unitins.aepII.ex2.modelo.Carros;
 import br.unitins.aepII.ex2.modelo.Motos;
 import br.unitins.aepII.ex2.modelo.Corrida;
-
 import java.util.Scanner;
 
 public class Main {
@@ -23,6 +22,7 @@ public class Main {
             System.out.println("Deseja encerrar o programa? Digite 's' para sim e 'n' para não.");
             encerrar = leitor.next().charAt(0);
         }while(encerrar != 's');
+        System.out.println("Para encerrar a aplicação, serão impressos todos os veículos existentes.");
         impressora(carros, motos);
     }
 
@@ -43,7 +43,6 @@ public class Main {
                 Motos.cadastrarMotos(motosLista);
             }else
                 System.out.println("Erro ao selecionar opção. Selecione novamente!");
-
         }while(escolher != 'c' && escolher != 'm');
     }
 
