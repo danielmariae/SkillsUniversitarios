@@ -28,10 +28,14 @@ public class Carros {
             listaCadastro[i].peso = leitorCarros.nextDouble();
             listaCadastro[i].velocidade = 0.0;
 
-            System.out.println("Deseja continuar cadastrando carros? Digtite 's' para sim e 'n' para não.");
-            char escolha = leitorCarros.next().charAt(0);
+            if (i<3){
+                System.out.println("Deseja continuar cadastrando motos? Digtite 's' para sim e 'n' para não.");
+                char escolha = leitorCarros.next().charAt(0);
 
-            if (escolha == 'n')
+                if (escolha == 'n')
+                    i=listaCadastro.length;
+
+            }else
                 i=listaCadastro.length;
 
         }

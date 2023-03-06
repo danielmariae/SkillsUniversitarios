@@ -82,11 +82,11 @@ public class Corrida {
 
     public static void vencedorCarros(Carros carroVencedor){
         System.out.println("Parabéns ao dono do carro "+carroVencedor.marca+" "+carroVencedor.modelo+"!");
-        System.out.println("Você ganhou essa corrida. Continue a se decidar e até a próxima!");
+        System.out.println("Você ganhou essa corrida. Continue a se dedicar e até a próxima!");
     }
 
     public static void vencedorMotos(Motos motoVencedora){
         System.out.println("Parabéns ao dono da moto "+motoVencedora.marca+" "+motoVencedora.modelo+", do ano "+motoVencedora.ano+"!");
-        System.out.println("Você ganhou essa corrida. Continue a se decidar e até a próxima!");
+        System.out.println("Você ganhou essa corrida. Continue a se dedicar e até a próxima!");
     }
 }
