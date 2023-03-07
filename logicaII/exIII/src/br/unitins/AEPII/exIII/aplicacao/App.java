@@ -1,6 +1,5 @@
 package br.unitins.AEPII.exIII.aplicacao;
-import br.unitins.AEPII.exIII.modelo.MaquinaRefrigerante;
-import br.unitins.AEPII.exIII.modelo.Produto;
+import br.unitins.AEPII.exIII.modelo.*;
 import java.util.Scanner;
 
 public class App {
@@ -13,9 +12,10 @@ public class App {
         char executador;
         do{
             Integer ch = menuEscolha();
-            Double qnt = menuQuantidade(listaLocal[ch]);
-            MaquinaRefrigerante.atualizarEstoque(listaLocal[ch], qnt);
-            menuDinheiro(listaLocal[ch], qnt);
+            Double qntEsc = menuQuantidade(listaLocal[ch]);
+            Cliente cliente = new Cliente(ch, qntEsc);
+            MaquinaRefrigerante.atualizarEstoque(listaLocal[cliente.getEscolha()], cliente.getQntDesejada());
+            menuDinheiro(listaLocal[cliente.getEscolha()], cliente.getQntDesejada());
 
             System.out.print("Deseja comprar outro produto?\nDigite 's' para SIM e 'n' para NÃO: ");
             executador = scApp.next().charAt(0);
