@@ -1,7 +1,9 @@
 package br.unitins.AEPII.exIII.aplicacao;
-import br.unitins.AEPII.exIII.modelo.*;
+import br.unitins.AEPII.exIII.modelo.Cliente;
+import br.unitins.AEPII.exIII.modelo.MaquinaRefrigerante;
+import br.unitins.AEPII.exIII.modelo.Produto;
+
 import java.util.Scanner;
-import static br.unitins.AEPII.exIII.modelo.MaquinaRefrigerante.criarLista;
 
 public class App {
 
