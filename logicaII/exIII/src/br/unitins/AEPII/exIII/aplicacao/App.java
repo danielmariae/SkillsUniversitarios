@@ -1,6 +1,7 @@
 package br.unitins.AEPII.exIII.aplicacao;
 import br.unitins.AEPII.exIII.modelo.*;
 import java.util.Scanner;
+import static br.unitins.AEPII.exIII.modelo.MaquinaRefrigerante.criarLista;
 
 public class App {
 
@@ -8,14 +9,16 @@ public class App {
 
 
     public static void main(String[] args) {
-        Produto[] listaLocal = MaquinaRefrigerante.criarLista();
+        Produto[] listaRefris = MaquinaRefrigerante.criarLista();
+        MaquinaRefrigerante maquinaDaCoca;
+        maquinaDaCoca = new MaquinaRefrigerante(0.00, listaRefris);
         char executador;
         do{
             Integer ch = menuEscolha();
-            Double qntEsc = menuQuantidade(listaLocal[ch]);
+            Double qntEsc = menuQuantidade(maquinaDaCoca.getProdutoEspecifico(ch));
             Cliente cliente = new Cliente(ch, qntEsc);
-            MaquinaRefrigerante.atualizarEstoque(listaLocal[cliente.getEscolha()], cliente.getQntDesejada());
-            menuDinheiro(listaLocal[cliente.getEscolha()], cliente.getQntDesejada());
+            MaquinaRefrigerante.atualizarEstoque(maquinaDaCoca.getProdutoEspecifico(cliente.getEscolha()), cliente.getQntDesejada());
+            menuDinheiro(maquinaDaCoca, cliente, maquinaDaCoca.getProdutoEspecifico(cliente.getEscolha()));
 
             System.out.print("Deseja comprar outro produto?\nDigite 's' para SIM e 'n' para NÃO: ");
             executador = scApp.next().charAt(0);
@@ -35,32 +38,43 @@ public class App {
         return scApp.nextDouble();
     }
 
-    public static void menuDinheiro(Produto produto, Double qntdEscolhida){
-        double precoTotal = MaquinaRefrigerante.calcularPreco(produto, qntdEscolhida);
-        System.out.println("Tudo custou: R$"+precoTotal);
-        System.out.print("Voce deseja pagar em dinheiro ou cartao/PIX?\nDigite 'd' para dinheiro e 'c' para cartao/PIX: ");
-        char escolha = scApp.next().charAt(0);
-        if(escolha == 'd'){
-            System.out.print("Insira o dinheiro na máquina: ");
-            double dinheiroInserido = scApp.nextDouble();
-            while (dinheiroInserido < precoTotal){
-                System.out.println("Dinheiro insuficiente! Insira mais dinheiro para continuar-mos, por gentileza.");
-                dinheiroInserido += scApp.nextDouble();
-            }
-            double troco = MaquinaRefrigerante.calcularTroco(dinheiroInserido, precoTotal);
-            if (troco>0){
-                System.out.println("Seu troco foi de: R$"+troco);
-                System.out.println("Retire o troco da máquina.");
+    public static void menuDinheiro(MaquinaRefrigerante maquina, Cliente cliente, Produto produto){
+        maquina.setValorTotal(MaquinaRefrigerante.calcularPreco(produto, cliente.getQntDesejada()));
+        System.out.println("Tudo custou: R$"+maquina.getValorTotal());
+        formaPagamento(cliente, maquina);
+    }
 
-            }
-        }else{
-            System.out.print("Digite 'p' para PIX ou 'c' para Cartões: ");
-            char formaPag = scApp.next().charAt(0);
-            if (formaPag == 'p')
-                System.out.println("Leia o QR Code para pagar via PIX.");
-            else
-                System.out.println("Siga os procedimentos da Máquina de cartão.");
-        }
+    public static void formaPagamento(Cliente cliente, MaquinaRefrigerante maquina) {
+        System.out.print("Voce deseja pagar em dinheiro ou cartao/PIX?\nDigite 'd' para dinheiro e 'c' para cartao/PIX: ");
+        cliente.setFormaPagamento(scApp.next().charAt(0));
+
+        if(cliente.getFormaPagamento() == 'd')
+            pagamentoDinheiro(cliente, maquina);
+        else
+            pagamentoPIXOuCartao(cliente);
         System.out.println("-- Pagamento feito com sucesso! --");
+    }
+
+    public static void pagamentoPIXOuCartao(Cliente cliente){
+        System.out.print("Digite 'p' para PIX ou 'c' para Cartões: ");
+        cliente.setFormaPagamento(scApp.next().charAt(0));
+        if (cliente.getFormaPagamento() == 'p')
+            System.out.println("Leia o QR Code para pagar via PIX.");
+        else
+            System.out.println("Siga os procedimentos da Máquina de cartão.");
+    }
+
+    public static void pagamentoDinheiro(Cliente cliente, MaquinaRefrigerante maquina){
+        System.out.print("Insira o dinheiro na máquina: ");
+        cliente.setValorInserido(scApp.nextDouble());
+        while (cliente.getValorInserido() < maquina.getValorTotal()){
+            System.out.println("Dinheiro insuficiente! Insira mais dinheiro para continuar-mos, por gentileza.");
+            cliente.adicionarDinheiro(cliente.getValorInserido(), scApp.nextDouble());
+        }
+        cliente.setTroco(MaquinaRefrigerante.calcularTroco(cliente.getValorInserido(), maquina.getValorTotal()));
+        if (cliente.getTroco()>0){
+            System.out.println("Seu troco foi de: R$"+cliente.getTroco());
+            System.out.println("Retire o troco da máquina.");
+        }
     }
 }
