@@ -1,4 +1,5 @@
 package br.unitins.AEPII.exIII.modelo;
+
 @SuppressWarnings("unused")
 public class Cliente {
     private Integer escolha;
@@ -15,12 +16,15 @@ public class Cliente {
     public Integer getEscolha() {
         return escolha;
     }
+
     public void setEscolha(Integer escolha) {
         this.escolha = escolha;
     }
+
     public Double getQntDesejada() {
         return qntDesejada;
     }
+
     public void setQntDesejada(Double qntDesejada) {
         this.qntDesejada = qntDesejada;
     }
@@ -33,8 +37,8 @@ public class Cliente {
         this.valorInserido = valorInserido;
     }
 
-    public void adicionarDinheiro(Double valorInserido, Double valorAMais){
-        this.valorInserido = valorInserido+valorAMais;
+    public void adicionarDinheiro(Double valorInserido, Double valorAMais) {
+        this.valorInserido = valorInserido + valorAMais;
     }
 
     public Double getTroco() {
