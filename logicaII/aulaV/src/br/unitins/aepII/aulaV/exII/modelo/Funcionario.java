@@ -24,5 +24,7 @@ public class Funcionario {
         System.out.println("Nome: "+nome);
         if(getChefeImediato() != null)
             System.out.println("Chefe imediato: "+getChefeImediato().getNome());
+        else
+            System.out.println("Chefe imediato: Sem");
     }
 }

@@ -4,7 +4,7 @@ package br.unitins.AEPII.exIII.modelo;
 public class Cliente {
     private Integer escolha;
     private Double qntDesejada;
-    private char formaPagamento;
+    private Character formaPagamento;
     private Double valorInserido;
     private Double troco;
 
@@ -49,7 +49,7 @@ public class Cliente {
         this.troco = troco;
     }
 
-    public char getFormaPagamento() {
+    public Character getFormaPagamento() {
         return formaPagamento;
     }
 

@@ -1,7 +1,7 @@
 package br.unitins.AEPII.exIII.modelo;
 
 public class MaquinaRefrigerante {
-    private double valorTotal;
+    private Double valorTotal;
     private Produto[] produtosAVenda;
 
     public MaquinaRefrigerante(double valorTotal, Produto[] produtosAVenda) {
@@ -31,7 +31,7 @@ public class MaquinaRefrigerante {
         return preco-aPagar;
     }
 
-    public double getValorTotal() {
+    public Double getValorTotal() {
         return valorTotal;
     }
 
