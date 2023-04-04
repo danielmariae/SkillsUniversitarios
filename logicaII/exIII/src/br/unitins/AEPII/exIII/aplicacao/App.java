@@ -14,7 +14,7 @@ public class App {
         maquinaDaCoca = new MaquinaRefrigerante(0.00, listaRefris);
         char executador;
         do {
-            Integer ch = menuEscolha();
+            int ch = menuEscolha(maquinaDaCoca);
             Double qntEsc = menuQuantidade(maquinaDaCoca.getProdutoEspecifico(ch));
             Cliente cliente = new Cliente(ch, qntEsc);
             MaquinaRefrigerante.atualizarEstoque(maquinaDaCoca.getProdutoEspecifico(cliente.getEscolha()), cliente.getQntDesejada());
@@ -25,11 +25,12 @@ public class App {
         } while (executador == 's');
     }
 
-    public static Integer menuEscolha() {
+    public static int menuEscolha(MaquinaRefrigerante maquina) {
         System.out.println("-- OLÁ, SEJA BEM-VINDO A MÁQUINA DE REFRIGERANTES COCA-COLA --");
         System.out.println("\nEscolha entre as opções abaixo:");
-        System.out.println("1: Coca-Cola 350mL;\n2: Coca-Cola 600mL;\n3: Coca-Cola 1L;\n4: Sprite 1L;");
-        System.out.print("Digite o seu produto favorito: ");
+        for (int i = 0; i < maquina.getLista().length; i++) {
+            System.out.println((i+1)+": "+maquina.getProdutoEspecifico(i).getNome()+" - Preço: "+maquina.getProdutoEspecifico(i).getPreco());
+        }
         return (scApp.nextInt()) - 1;
     }
 

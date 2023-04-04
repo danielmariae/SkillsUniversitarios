@@ -22,7 +22,7 @@ public class Principal {
         livro.setTitulo("Senhor dos Anéis");
 
         autor.printAll();
-        System.out.println("####");
+        System.out.println("-------");
         livro.printAll();
     }
 }

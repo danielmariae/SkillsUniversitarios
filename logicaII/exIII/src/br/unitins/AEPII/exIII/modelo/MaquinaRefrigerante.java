@@ -2,7 +2,7 @@ package br.unitins.AEPII.exIII.modelo;
 
 public class MaquinaRefrigerante {
     private Double valorTotal;
-    private Produto[] produtosAVenda;
+    private final Produto[] produtosAVenda;
 
     public MaquinaRefrigerante(double valorTotal, Produto[] produtosAVenda) {
         this.valorTotal = valorTotal;
@@ -43,15 +43,7 @@ public class MaquinaRefrigerante {
         return produtosAVenda[i];
     }
 
-    public void setProdutoEsepecifico(Produto produtoEscolhido, int i){
-        this.produtosAVenda[i] = produtoEscolhido;
-    }
-
     public Produto[] getLista(){
         return produtosAVenda;
-    }
-
-    public void setLista(Produto[] lista) {
-        this.produtosAVenda = lista;
     }
 }
