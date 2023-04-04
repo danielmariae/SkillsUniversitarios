@@ -1,9 +1,13 @@
-package ex3;
+package ex4.modelo;
 
 public class Pessoa {
     private Integer id;
     private String nome;
     private String email;
+
+    public Pessoa() {
+    }
+
     public Integer getId() {
         return id;
     }
@@ -26,5 +30,13 @@ public class Pessoa {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+    public void imprimir(){
+        System.out.println("ID: "+id);
+        System.out.println("Nome: "+nome);
+        System.out.println("Email: "+email);
+        if(this instanceof PessoaFisica){
+            System.out.println("CPF: "+((PessoaFisica)this).getCpf());
+        }
     }
 }
