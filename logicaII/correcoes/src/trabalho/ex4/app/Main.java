@@ -1,7 +1,6 @@
-package ex4.app;
-
-import ex4.modelo.Pessoa;
-import ex4.modelo.PessoaFisica;
+package trabalho.ex4.app;
+import trabalho.ex4.modelo.Pessoa;
+import trabalho.ex4.modelo.PessoaFisica;
 
 public class Main {
     public static void main(String[] args) {

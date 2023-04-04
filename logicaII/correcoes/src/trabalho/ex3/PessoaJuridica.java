@@ -1,4 +1,4 @@
-package ex3;
+package trabalho.ex3;
 
 public class PessoaJuridica {
 }

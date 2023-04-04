@@ -1,6 +1,4 @@
-package ex4.modelo;
-
-import ex4.modelo.Pessoa;
+package trabalho.ex4.modelo;
 
 public class PessoaFisica extends Pessoa {
     private String cpf;
