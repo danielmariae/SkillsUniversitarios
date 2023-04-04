@@ -1,4 +1,6 @@
-package trabalho.ex4.modelo;
+package trabalho.ex5.modelo;
+
+import java.util.Objects;
 
 public class Pessoa {
     private Integer id;
@@ -39,5 +41,26 @@ public class Pessoa {
             System.out.println("Pessoa Fisica");
             System.out.println("CPF: "+((PessoaFisica)this).getCpf());
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Pessoa pessoa)) return false;
+        return id.equals(pessoa.id) && Objects.equals(nome, pessoa.nome) && Objects.equals(email, pessoa.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, nome, email);
     }
 }

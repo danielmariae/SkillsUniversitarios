@@ -36,6 +36,7 @@ public class Pessoa {
         System.out.println("Nome: "+nome);
         System.out.println("Email: "+email);
         if(this instanceof PessoaFisica){
+            System.out.println("Pessoa Fisica");
             System.out.println("CPF: "+((PessoaFisica)this).getCpf());
         }
     }
