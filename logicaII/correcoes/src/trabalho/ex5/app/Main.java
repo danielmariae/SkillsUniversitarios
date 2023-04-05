@@ -1,6 +1,6 @@
-package trabalho.ex4.app;
-import trabalho.ex4.modelo.Pessoa;
-import trabalho.ex4.modelo.PessoaFisica;
+package trabalho.ex5.app;
+import trabalho.ex5.modelo.Pessoa;
+import trabalho.ex5.modelo.PessoaFisica;
 
 public class Main {
     public static void main(String[] args) {
@@ -11,11 +11,15 @@ public class Main {
         System.out.println();
         teste2.imprimir();
 
-        Pessoa p = new Pessoa();
-        p.setId(3);
-        p.setNome("Leandra");
-        p.setEmail("leandrac@unitins.br");
-        imprimir(p);
+        Pessoa p1 = new Pessoa();
+        p1.setId(3);
+        p1.setNome("Leandra");
+        p1.setEmail("leandrac@unitins.br");
+
+        Pessoa p2 = new Pessoa();
+        p2.setId(4);
+
+        System.out.println(p1.equals(p2));;
     }
     public static void imprimir(Pessoa pessoa){
         pessoa.imprimir();

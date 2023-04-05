@@ -1,4 +1,4 @@
-package trabalho.ex4.modelo;
+package trabalho.ex5.modelo;
 
 public class PessoaFisica extends Pessoa {
     private String cpf;

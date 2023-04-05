@@ -1,4 +1,4 @@
-package ex2;
+package trabalho.ex2;
 
 public class Matematica {
     public static int soma(int v1, int v2){

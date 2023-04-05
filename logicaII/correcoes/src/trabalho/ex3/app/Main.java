@@ -1,6 +1,6 @@
-package ex3.app;
+package trabalho.ex3.app;
 
-import ex3.modelo.PessoaFisica;
+import trabalho.ex3.modelo.PessoaFisica;
 
 public class Main {
     public static void main(String[] args) {

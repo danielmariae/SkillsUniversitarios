@@ -1,4 +1,4 @@
-package ex4.modelo;
+package trabalho.ex4.modelo;
 
 public class PessoaJuridica {
     private String cnpj;
